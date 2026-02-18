@@ -24,12 +24,16 @@ export default function Home() {
         Subscribe
       </button>
 
+      <div style={styles.leftVisual} />
       <div style={styles.heroGlow} />
-      <div style={styles.skyline} />
 
       <section style={styles.centerWrap}>
         <h1 style={styles.title}>hello world</h1>
-        <p style={styles.subtitle}>from Rafael</p>
+        <p style={styles.subtitle}>
+          Dear fahd and all humans all over the world. From today onwards I can
+          build webpages and browser applications to the whole world, out of my
+          Telegram Kite agent. by mental help by Rick 😊
+        </p>
       </section>
 
       <section style={styles.scrollSpace}>
@@ -66,25 +70,23 @@ const styles = {
     cursor: "pointer",
     transition: "transform 140ms ease-out",
   },
+  leftVisual: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: "42%",
+    background:
+      "linear-gradient(180deg, rgba(80, 130, 255, 0.22), rgba(15, 24, 52, 0.8)), linear-gradient(90deg, rgba(22, 31, 63, 0.95) 0%, rgba(22, 31, 63, 0.25) 100%)",
+    clipPath: "polygon(0 0, 100% 0, 75% 100%, 0 100%)",
+    boxShadow: "40px 0 120px rgba(95, 120, 255, 0.2)",
+    pointerEvents: "none",
+  },
   heroGlow: {
     position: "absolute",
     inset: 0,
     background:
       "linear-gradient(180deg, rgba(82, 141, 255, 0.10) 0%, rgba(255,255,255,0.02) 40%, rgba(139,92,246,0.12) 100%)",
-    pointerEvents: "none",
-  },
-  skyline: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: "25vh",
-    height: "32vh",
-    opacity: 0.52,
-    background:
-      "linear-gradient(180deg, transparent 0%, rgba(9,12,30,0.2) 35%, rgba(7,9,20,0.88) 100%), polygon(0% 100%, 0% 68%, 8% 68%, 8% 48%, 14% 48%, 14% 64%, 21% 64%, 21% 36%, 26% 36%, 26% 70%, 33% 70%, 33% 42%, 38% 42%, 38% 62%, 45% 62%, 45% 30%, 50% 30%, 50% 68%, 58% 68%, 58% 44%, 63% 44%, 63% 60%, 70% 60%, 70% 40%, 74% 40%, 74% 66%, 82% 66%, 82% 46%, 88% 46%, 88% 70%, 100% 70%, 100% 100%)",
-    clipPath:
-      "polygon(0% 100%, 0% 68%, 8% 68%, 8% 48%, 14% 48%, 14% 64%, 21% 64%, 21% 36%, 26% 36%, 26% 70%, 33% 70%, 33% 42%, 38% 42%, 38% 62%, 45% 62%, 45% 30%, 50% 30%, 50% 68%, 58% 68%, 58% 44%, 63% 44%, 63% 60%, 70% 60%, 70% 40%, 74% 40%, 74% 66%, 82% 66%, 82% 46%, 88% 46%, 88% 70%, 100% 70%, 100% 100%)",
-    boxShadow: "0 -20px 70px rgba(70, 100, 255, 0.18)",
     pointerEvents: "none",
   },
   centerWrap: {
@@ -94,7 +96,9 @@ const styles = {
     textAlign: "center",
     position: "relative",
     zIndex: 2,
-    padding: "0 16px",
+    padding: "0 20px",
+    maxWidth: "960px",
+    margin: "0 auto",
   },
   title: {
     margin: 0,
@@ -103,10 +107,11 @@ const styles = {
     textShadow: "0 0 30px rgba(120,160,255,0.35)",
   },
   subtitle: {
-    marginTop: "10px",
-    fontSize: "clamp(20px, 2.2vw, 30px)",
-    color: "#cfd8ff",
-    letterSpacing: "0.3px",
+    marginTop: "14px",
+    fontSize: "clamp(16px, 1.8vw, 24px)",
+    color: "#d7deff",
+    lineHeight: 1.45,
+    maxWidth: "900px",
   },
   scrollSpace: {
     height: "100vh",
