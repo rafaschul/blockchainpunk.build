@@ -1,127 +1,192 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY || 0);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const floatingOffset = Math.min(scrollY * 0.08, 26);
-
   return (
     <main style={styles.page}>
-      <button
-        style={{
-          ...styles.subscribeBtn,
-          transform: `translateY(${floatingOffset}px)`,
-        }}
-      >
-        Subscribe
-      </button>
+      <div style={styles.container}>
+        <aside style={styles.sidebar}>
+          <h1 style={styles.name}>RICHARD SWART</h1>
+          <p style={styles.role}>MARKETING MANAGER</p>
 
-      <div style={styles.leftVisual} />
-      <div style={styles.heroGlow} />
+          <SectionTitle text="CONTACT" color="#0ea5e9" />
+          <p style={styles.sidebarText}>+123-456-7890</p>
+          <p style={styles.sidebarText}>123 Anywhere St., Any City</p>
 
-      <section style={styles.centerWrap}>
-        <h1 style={styles.title}>hello world</h1>
-        <p style={styles.subtitle}>
-          Dear fahd and all humans all over the world. From today onwards I can
-          build webpages and browser applications to the whole world, out of my
-          Telegram Kite agent. by mental help by Rick 😊
-        </p>
-      </section>
+          <SectionTitle text="SKILLS" color="#8b5cf6" />
+          <ul style={styles.list}>
+            <li>Project Management</li>
+            <li>Public Relations</li>
+            <li>Teamwork</li>
+            <li>Time Management</li>
+            <li>Leadership</li>
+            <li>Effective Communication</li>
+            <li>Critical Thinking</li>
+          </ul>
 
-      <section style={styles.scrollSpace}>
-        <p style={styles.hint}>Scroll to see the floating subscribe button movement.</p>
-      </section>
+          <SectionTitle text="LANGUAGES" color="#16a34a" />
+          <ul style={styles.list}>
+            <li>English (Fluent)</li>
+            <li>French (Fluent)</li>
+            <li>German (Basics)</li>
+            <li>Spanish (Intermediate)</li>
+          </ul>
+        </aside>
+
+        <section style={styles.main}>
+          <SectionTitle text="PROFILE" color="#f97316" />
+          <p style={styles.paragraph}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation. Ut enim ad minim veniam quis nostrud exercitation.
+          </p>
+
+          <SectionTitle text="WORK EXPERIENCE" color="#ef4444" />
+          <Job
+            title="Borcelle Studio"
+            subtitle="Marketing Manager & Specialist"
+            period="2030 - PRESENT"
+            items={[
+              "Develop and execute comprehensive marketing strategies and campaigns that align with the company’s goals and objectives.",
+              "Lead, mentor, and manage a high-performing marketing team, fostering a collaborative and results-driven work environment.",
+              "Monitor brand consistency across marketing channels and materials.",
+            ]}
+          />
+          <Job
+            title="Fauget Studio"
+            subtitle="Marketing Manager & Specialist"
+            period="2025 - 2029"
+            items={[
+              "Create and manage the marketing budget, ensuring efficient allocation of resources and optimizing ROI.",
+              "Oversee market research to identify emerging trends, customer needs, and competitor strategies.",
+              "Monitor brand consistency across marketing channels and materials.",
+            ]}
+          />
+          <Job
+            title="Studio Shodwe"
+            subtitle="Marketing Manager & Specialist"
+            period="2024 - 2025"
+            items={[
+              "Develop and maintain strong relationships with partners, agencies, and vendors to support marketing initiatives.",
+              "Monitor and maintain brand consistency across all marketing channels and materials.",
+            ]}
+          />
+
+          <SectionTitle text="EDUCATION" color="#2563eb" />
+          <div style={styles.eduItem}>
+            <p style={styles.eduYear}>2029 - 2030</p>
+            <p style={styles.eduSchool}>WARDIERE UNIVERSITY</p>
+            <p style={styles.eduLine}>• Master of Business</p>
+            <p style={styles.eduLine}>• Management</p>
+          </div>
+          <div style={styles.eduItem}>
+            <p style={styles.eduYear}>2025 - 2029</p>
+            <p style={styles.eduSchool}>WARDIERE UNIVERSITY</p>
+            <p style={styles.eduLine}>• Bachelor of Business</p>
+            <p style={styles.eduLine}>• GPA: 3.8 / 4.0</p>
+          </div>
+
+          <SectionTitle text="REFERENCE" color="#7c3aed" />
+          <div style={styles.referenceWrap}>
+            <div>
+              <p style={styles.refName}>Estelle Darcy</p>
+              <p style={styles.refText}>Wardiere Inc. / CTO</p>
+              <p style={styles.refText}>Phone: 123-456-7890</p>
+              <p style={styles.refText}>Email: hello@reallygreatsite.com</p>
+            </div>
+            <div>
+              <p style={styles.refName}>Harper Richard</p>
+              <p style={styles.refText}>Wardiere Inc. / CEO</p>
+              <p style={styles.refText}>Phone: 123-456-7890</p>
+              <p style={styles.refText}>Email: hello@reallygreatsite.com</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
+  );
+}
+
+function SectionTitle({ text, color }) {
+  return <h2 style={{ ...styles.sectionTitle, color }}>{text}</h2>;
+}
+
+function Job({ title, subtitle, period, items }) {
+  return (
+    <div style={styles.job}>
+      <p style={styles.jobHeader}>
+        <span style={styles.jobTitle}>{title}</span> — <span style={styles.jobSub}>{subtitle}</span> — <span style={styles.jobPeriod}>{period}</span>
+      </p>
+      <ul style={styles.jobList}>
+        {items.map((i, idx) => (
+          <li key={idx}>{i}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
 const styles = {
   page: {
-    position: "relative",
-    minHeight: "200vh",
-    overflow: "hidden",
-    color: "#f5f7ff",
-    fontFamily: "system-ui, sans-serif",
-    background:
-      "radial-gradient(1200px 600px at 20% 10%, rgba(74, 124, 255, 0.28), transparent 70%), radial-gradient(1000px 500px at 80% 20%, rgba(159, 61, 255, 0.22), transparent 70%), linear-gradient(180deg, #070a17 0%, #090f25 45%, #05070f 100%)",
-  },
-  subscribeBtn: {
-    position: "fixed",
-    top: "20px",
-    right: "20px",
-    zIndex: 20,
-    border: "1px solid rgba(170, 190, 255, 0.45)",
-    borderRadius: "999px",
-    padding: "10px 18px",
-    color: "#e9eeff",
-    fontWeight: 700,
-    letterSpacing: "0.2px",
-    background: "linear-gradient(135deg, rgba(76, 112, 255, 0.75), rgba(168, 77, 255, 0.75))",
-    boxShadow: "0 8px 26px rgba(60, 95, 255, 0.35)",
-    backdropFilter: "blur(8px)",
-    cursor: "pointer",
-    transition: "transform 140ms ease-out",
-  },
-  leftVisual: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    bottom: 0,
-    width: "42%",
-    background:
-      "linear-gradient(180deg, rgba(80, 130, 255, 0.22), rgba(15, 24, 52, 0.8)), linear-gradient(90deg, rgba(22, 31, 63, 0.95) 0%, rgba(22, 31, 63, 0.25) 100%)",
-    clipPath: "polygon(0 0, 100% 0, 75% 100%, 0 100%)",
-    boxShadow: "40px 0 120px rgba(95, 120, 255, 0.2)",
-    pointerEvents: "none",
-  },
-  heroGlow: {
-    position: "absolute",
-    inset: 0,
-    background:
-      "linear-gradient(180deg, rgba(82, 141, 255, 0.10) 0%, rgba(255,255,255,0.02) 40%, rgba(139,92,246,0.12) 100%)",
-    pointerEvents: "none",
-  },
-  centerWrap: {
     minHeight: "100vh",
-    display: "grid",
-    placeItems: "center",
-    textAlign: "center",
-    position: "relative",
-    zIndex: 2,
-    padding: "0 20px",
-    maxWidth: "960px",
+    background: "linear-gradient(135deg, #f8fbff 0%, #eef4ff 50%, #fdfcff 100%)",
+    padding: "32px 16px",
+    fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+    color: "#0f172a",
+  },
+  container: {
+    maxWidth: "1200px",
     margin: "0 auto",
-  },
-  title: {
-    margin: 0,
-    fontSize: "clamp(40px, 7vw, 84px)",
-    fontWeight: 800,
-    textShadow: "0 0 30px rgba(120,160,255,0.35)",
-  },
-  subtitle: {
-    marginTop: "14px",
-    fontSize: "clamp(16px, 1.8vw, 24px)",
-    color: "#d7deff",
-    lineHeight: 1.45,
-    maxWidth: "900px",
-  },
-  scrollSpace: {
-    height: "100vh",
     display: "grid",
-    placeItems: "center",
-    position: "relative",
-    zIndex: 2,
+    gridTemplateColumns: "320px 1fr",
+    gap: "24px",
   },
-  hint: {
-    color: "rgba(216, 224, 255, 0.85)",
-    fontSize: "14px",
+  sidebar: {
+    background: "#ffffff",
+    border: "1px solid #e5e7eb",
+    borderRadius: "20px",
+    padding: "24px",
+    boxShadow: "0 12px 40px rgba(15, 23, 42, 0.08)",
+    height: "fit-content",
+    position: "sticky",
+    top: "16px",
   },
+  name: {
+    margin: 0,
+    fontSize: "34px",
+    lineHeight: 1.05,
+    fontWeight: 900,
+    letterSpacing: "0.4px",
+    color: "#111827",
+  },
+  role: {
+    margin: "8px 0 18px",
+    fontWeight: 700,
+    color: "#334155",
+    letterSpacing: "0.3px",
+  },
+  sidebarText: { margin: "4px 0", color: "#334155" },
+  main: {
+    background: "#ffffff",
+    border: "1px solid #e5e7eb",
+    borderRadius: "20px",
+    padding: "28px",
+    boxShadow: "0 12px 40px rgba(15, 23, 42, 0.08)",
+  },
+  sectionTitle: {
+    margin: "18px 0 10px",
+    fontSize: "16px",
+    fontWeight: 900,
+    letterSpacing: "0.9px",
+  },
+  paragraph: { margin: 0, lineHeight: 1.65, color: "#1f2937" },
+  list: { margin: "8px 0 0 18px", padding: 0, lineHeight: 1.8, color: "#1f2937" },
+  job: { marginBottom: "14px" },
+  jobHeader: { margin: "0 0 8px", lineHeight: 1.4 },
+  jobTitle: { fontWeight: 900, color: "#111827" },
+  jobSub: { fontWeight: 700, color: "#374151" },
+  jobPeriod: { fontWeight: 700, color: "#2563eb" },
+  jobList: { margin: 0, paddingLeft: "18px", lineHeight: 1.7, color: "#1f2937" },
+  eduItem: { marginBottom: "10px" },
+  eduYear: { margin: 0, fontWeight: 700, color: "#334155" },
+  eduSchool: { margin: "2px 0", fontWeight: 900, color: "#111827" },
+  eduLine: { margin: "1px 0", color: "#1f2937" },
+  referenceWrap: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" },
+  refName: { margin: 0, fontWeight: 900, color: "#111827" },
+  refText: { margin: "2px 0", color: "#334155" },
 };
