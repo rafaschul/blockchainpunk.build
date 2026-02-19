@@ -70,6 +70,10 @@ export default function DashboardPage() {
     <main style={styles.page}><div style={styles.container}>
       <h1 style={styles.title}>Kite Ops Dashboard</h1>
       <p style={styles.subtitle}>Filter tasks by daily, project, investment, and execution status.</p>
+      <section style={styles.summaryLinks}>
+        <a href="/dashboard/summaries/progress" style={styles.summaryLink}>Open Dayplay Progress</a>
+        <a href="/dashboard/summaries/evening" style={styles.summaryLink}>Open Evening Summary</a>
+      </section>
 
       <section style={styles.kpis}><Kpi label="Total" value={stats.total} /><Kpi label="Open" value={stats.open} /><Kpi label="Blocked" value={stats.blocked} /><Kpi label="Done" value={stats.done} /></section>
 
@@ -114,6 +118,8 @@ function GreenKpi({ label, value }) { return <div style={styles.greenKpiCard}><d
 
 const styles = {
   page: { minHeight: "100vh", background: "#f8fafc", color: "#0f172a", fontFamily: "Inter, system-ui, sans-serif", padding: "24px" }, container: { maxWidth: "1100px", margin: "0 auto" }, title: { margin: 0, fontSize: "34px", fontWeight: 900 }, subtitle: { marginTop: "8px", color: "#475569" },
+  summaryLinks: { display: "flex", gap: "10px", marginTop: "10px", flexWrap: "wrap" },
+  summaryLink: { textDecoration: "none", background: "#ecfeff", color: "#0f766e", border: "1px solid #99f6e4", padding: "8px 12px", borderRadius: "999px", fontWeight: 700, fontSize: "13px" },
   kpis: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: "12px", marginTop: "20px" }, kpiCard: { background: "#fff", border: "1px solid #e2e8f0", borderRadius: "14px", padding: "14px" }, kpiValue: { fontSize: "28px", fontWeight: 800 }, kpiLabel: { color: "#64748b", fontSize: "13px" },
   filters: { display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "10px", marginTop: "18px" }, search: { padding: "10px 12px", borderRadius: "10px", border: "1px solid #cbd5e1", fontSize: "14px" }, select: { padding: "10px 12px", borderRadius: "10px", border: "1px solid #cbd5e1", fontSize: "14px", background: "#fff" },
   tableWrap: { marginTop: "16px", background: "#fff", border: "1px solid #e2e8f0", borderRadius: "14px", overflow: "hidden" }, table: { width: "100%", borderCollapse: "collapse" }, th: { textAlign: "left", fontSize: "12px", color: "#64748b", padding: "12px", borderBottom: "1px solid #e2e8f0" }, td: { padding: "12px", borderBottom: "1px solid #f1f5f9", fontSize: "14px" }, badge: { fontSize: "12px", border: "1px solid", borderRadius: "999px", padding: "2px 8px", fontWeight: 600 }, empty: { padding: "16px", color: "#64748b" },
