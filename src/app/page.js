@@ -27,7 +27,9 @@ export default function Home() {
 
       <header style={styles.nav}>
         <div style={styles.logoWrap}>
-          <div style={styles.logoMark}>M</div>
+          <div style={styles.logoBadge}>
+            <img src="/bcp-logo.jpg" alt="BCP Partners logo" style={styles.logoImage} />
+          </div>
           <div>
             <div style={styles.logo}>MoltMarketCap</div>
             <div style={styles.logoSub}>On-Chain Venture Access</div>
@@ -175,7 +177,18 @@ const styles = {
   },
   nav: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0 20px" },
   logoWrap: { display: "flex", alignItems: "center", gap: "10px" },
-  logoMark: { width: 34, height: 34, borderRadius: 10, display: "grid", placeItems: "center", background: "linear-gradient(135deg,#16a34a,#22c55e)", color: "#fff", fontWeight: 900 },
+  logoBadge: {
+    width: 70,
+    height: 52,
+    borderRadius: 12,
+    overflow: "hidden",
+    background: "rgba(255,255,255,0.8)",
+    border: "1px solid #dbeafe",
+    boxShadow: "0 8px 24px rgba(15, 23, 42, 0.08)",
+    display: "grid",
+    placeItems: "center",
+  },
+  logoImage: { width: "100%", height: "100%", objectFit: "cover" },
   logo: { fontWeight: 900, fontSize: "22px", letterSpacing: "0.3px" },
   logoSub: { fontSize: 12, color: "#64748b" },
   navLinks: { display: "flex", gap: "14px", alignItems: "center" },
