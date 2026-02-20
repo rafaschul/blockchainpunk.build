@@ -9,7 +9,6 @@ export default function Home() {
         <div style={s.brand}>BlockchainPunk Build</div>
         <nav style={s.links}>
           <Link href="/dashboard" style={s.link}>Dashboard</Link>
-          <Link href="/project-dashboard" style={s.link}>Project Dashboard</Link>
           <Link href="/offerings" style={s.link}>Offerings</Link>
           <Link href="/settings" style={s.link}>Settings</Link>
         </nav>
